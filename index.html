@@ -35,7 +35,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>苏天彬 | 文天玩WenTianPlay</title>
     <link rel="shortcut icon" href="https://www.WenTianPlay.net/favicon.ico" type="image/x-icon">
     <style>
@@ -50,12 +50,14 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            width: 100%;
         }
         
         header {
@@ -86,6 +88,13 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
         }
         
         .main-content {
@@ -95,15 +104,16 @@
             margin-top: 20px;
         }
         
-        .skin-preview {
-            position: relative;
-            width: 64px;
-            height: 150px;
-            image-rendering: pixelated;
-            background: url('index.webp') 0 0 no-repeat;
-            background-size: 64px 32px;
-            transform: scale(2);
-            transform-origin: top left;
+        .skin-left-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .skin-title {
@@ -112,31 +122,52 @@
             color: #00a1d6;
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .skin-preview-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .skin-preview {
+            width: 100%;
+            height: 300px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
         }
         
         .skin-image {
             width: 100%;
-            max-width: 300px;
-            height: 300px;
-            background: #f0f0f0;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            font-size: 18px;
-            color: #888;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .skin-owner {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+            text-align: center;
         }
         
         .action-buttons {
             display: flex;
             gap: 10px;
             margin-top: 20px;
+            justify-content: center;
+            width: 100%;
         }
         
         .btn {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -144,6 +175,7 @@
             text-decoration: none;
             transition: all 0.3s;
             text-align: center;
+            font-size: 14px;
         }
         
         .btn-primary {
@@ -214,6 +246,10 @@
             border-radius: 4px;
         }
         
+        .notice p {
+            margin: 5px 0;
+        }
+        
         .copyright {
             text-align: center;
             margin-top: 30px;
@@ -224,11 +260,54 @@
         }
         
         @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
             .main-content {
+                gap: 20px;
+            }
+            
+            .skin-left-section,
+            .skin-info {
+                width: 100%;
+                min-width: 100%;
+            }
+            
+            .skin-preview-container {
+                max-width: 250px;
+            }
+            
+            .skin-preview {
+                height: 250px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
                 flex-direction: column;
             }
             
-            .skin-preview, .skin-info {
+            .btn {
                 width: 100%;
             }
         }
@@ -238,51 +317,58 @@
     <div class="container">
         <header>
             <div class="header-content">
-                <div class="logo">我的世界皮肤</div>
+                <div class="logo"><a href="./index.txt" target="_blank">文天玩</a></div>
                 <div class="nav-links">
-                    <a href="https://official.wentianplay.com/">文天玩</a>
-                    <a href="https://www.qidian.com/book/1041003789/">小说</a>
-                    <a href="./index.txt">文字稿</a>
+                    <a href="https://official.wentianplay.com/" target="_blank">文天玩</a>
+                    <a href="https://www.qidian.com/book/1041003789/" target="_blank">小说</a>
+                    <a href="./index.txt" target="_blank">文字稿</a>
                 </div>
             </div>
         </header>
+        
         <div class="main-content">
-            <div class="skin-preview">
+            <div class="skin-left-section">
                 <h2 class="skin-title">苏天彬</h2>
-                <div class="skin-image">
-                    [皮肤预览图]
+                <div class="skin-preview-container">
+                    <div class="skin-preview">
+                        <!-- 替换为你的实际图片路径 -->
+                        <img src="./index.webp" alt="苏天彬皮肤" class="skin-image" onerror="this.src='https://via.placeholder.com/430x437?text=Skin+Preview'">
+                    </div>
+                    <p class="skin-owner">哔哩哔哩：苏天彬</p>
                 </div>
-                <p>哔哩哔哩：苏天彬</p>
                 <div class="action-buttons">
-<button class="btn btn-primary" onclick="window.location.href='https://littleskin.cn/skinlib/show/467128'">
-    添加至衣柜
- </button>
-  </div>
-   </div>
-    <div class="skin-info">
-     <div class="info-section">
-      <h3>材质描述</h3>
-       <p>价格：198元定制の私人皮</p>
-        <p>版权所有：文天玩WenTianPlay</p>
-         <p>官方网站：https://official.wentianplay.com/</p>
-          <div class="notice">
-           <p>此为"BiliBili苏天彬"专用私人皮，仅供试玩使用!!!</p>
-            <p>未经许可·禁止二创搬运抄袭以及商业用途·违者必究</p>
-             </div>
-              </div>
-               <div class="info-section">
-                <h3>详细信息</h3>
-                 <div class="info-grid">
-                  <div class="info-item">
-                   <span class="info-label">名称</span>
-                    <span class="info-value">BiliBili苏天彬-文天玩WenTianPlay创始人</span>
-                     </div>
-                      <div class="info-item">
-                       <span class="info-label">适用模型</span>
-                        <span class="info-value">Steve</span>
-                         </div>
-                          <div class="info-item">
-                           <span class="info-label">TID</span>
+                    <button class="btn btn-primary" onclick="window.location.href='https://littleskin.cn/skinlib/show/467128'">
+                        添加至衣柜
+                    </button>
+                </div>
+            </div>
+            
+            <div class="skin-info">
+                <div class="info-section">
+                    <h3>材质描述</h3>
+                    <p>价格：198元定制の私人皮</p>
+                    <p>版权所有：文天玩WenTianPlay</p>
+                    <p>官方网站：https://official.wentianplay.com/</p>
+                    
+                    <div class="notice">
+                        <p>此为"BiliBili苏天彬"专用私人皮，仅供试玩使用!!!</p>
+                        <p>未经许可·禁止二创搬运抄袭以及商业用途·违者必究</p>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3>详细信息</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">名称</span>
+                            <span class="info-value">BiliBili苏天彬-文天玩WenTianPlay创始人</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">适用模型</span>
+                            <span class="info-value">Steve</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">TID</span>
                             <span class="info-value">467128</span>
                         </div>
                         <div class="info-item">
@@ -305,8 +391,9 @@
                 </div>
             </div>
         </div>
-         <div class="copyright">
-          <p>© 2024 文天玩WenTianPlay</p>
+        
+        <div class="copyright">
+            <p>© 2024 文天玩WenTianPlay</p>
         </div>
     </div>
 </body>
